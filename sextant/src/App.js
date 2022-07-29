@@ -1,31 +1,27 @@
-
+import React, { Component } from 'react';
 import './App.css';
 import Banner from './Banner';
-import Card from './Card';
-import Fetch from './Fetch';
-import Client from './Client';
+import Exhibit from './Exhibit';
+import AddressDisplay from './AddressDisplay';
+import PylonConnector from './PylonConnector';
 
-function App() {
-  return (
-    <div className="App">
-    
-        <Banner />
-        
-        <div className="App-components">
-          <Card title='IPv4 Address'>
-            <Fetch url='https://api.ipify.org?format=json' />
-          </Card>
-          
-          <Card title='IPv6 Address'>
-            <Fetch url='https://api64.ipify.org?format=json'/>
-          </Card>
-          
-          <Card title='Latency'>
-            <Client />
-          </Card>
-        </div>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <Banner bannerText="Cisco Sextant" />
+                <Exhibit name="IPv4 Address">
+                    <AddressDisplay url='https://api.ipify.org?format=json' />
+                </Exhibit>
+                <Exhibit name="IPv6 Address">
+                    <AddressDisplay url='https://api64.ipify.org?format=json' />
+                </Exhibit>
+                <Exhibit name="Pylon Latency">
+                    <PylonConnector />
+                </Exhibit>
+            </div>
+        );
+    }
 }
 
 export default App;
